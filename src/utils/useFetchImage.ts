@@ -12,7 +12,7 @@ export const useFetchImage = (hours: string, minutes: string) => {
     queryFn: async () => {
       const place = AREA_CODES_MAP[hours + minutes]
 
-      const QUERY = place ? `wallpaper of ${place}` : 'Pretty wallpaper'
+      const QUERY = place ? `wallpaper of ${place}` : 'Famous landscapes'
       const ORIENTATION = 'landscape'
       const PER_PAGE = 15
 
@@ -32,6 +32,5 @@ export const useFetchImage = (hours: string, minutes: string) => {
         image: randomElement(data.photos as Photo[]),
       }
     },
-    staleTime: 10000,
   })
 }
