@@ -48,7 +48,7 @@ const App = () => {
             )}
           >
             <div
-              className="absolute inset-0 bottom-0 bg-[rgba(255,255,255,0.05)] origin-top transform duration-[16] ease-linear"
+              className="absolute inset-0 bottom-0 bg-[rgba(255,255,255,0.05)] origin-top transform ease-linear"
               style={{ transform: `scaleY(${animationProgress})` }}
             />
 
