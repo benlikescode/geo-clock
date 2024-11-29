@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Photo } from 'pexels'
 import { AREA_CODES_MAP } from './data'
@@ -7,7 +8,9 @@ const PEXELS_API_KEY = import.meta.env.VITE_PEXELS_API_KEY
 const PEXELS_BASE_ENDPOINT = 'https://api.pexels.com/v1/search'
 
 export const useFetchImage = (hours: string, minutes: string) => {
-  return useQuery({
+  const [prevImage, setPrevImage] = useState<Photo>()
+
+  const query = useQuery({
     queryKey: ['image', hours, minutes],
     queryFn: async () => {
       const place = AREA_CODES_MAP[hours + minutes]
@@ -27,10 +30,14 @@ export const useFetchImage = (hours: string, minutes: string) => {
 
       const data = await response.json()
 
-      return {
-        name: place || 'Next Area Code at 2:00',
-        image: randomElement(data.photos as Photo[]),
-      }
+      const name = place || 'Next Area Code at 2:00'
+      const image = randomElement(data.photos as Photo[])
+
+      setPrevImage(image)
+
+      return { name, image }
     },
   })
+
+  return { ...query, prevImage }
 }

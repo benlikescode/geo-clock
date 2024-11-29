@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '@radix-ui/react-tooltip'
-import ArrowPath from './icons/ArrowPath'
+import ArrowPathIcon from './icons/ArrowPathIcon'
 import HelpIcon from './icons/HelpIcon'
 
 const TOOLTIP_OFFSET = 8
@@ -13,7 +13,7 @@ type Props = {
 
 const Buttons: FC<Props> = ({ refetch }) => {
   return (
-    <div className="absolute bottom-4 right-4 flex items-center gap-3">
+    <div className="absolute top-0 right-0 flex items-center gap-3">
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger>
@@ -21,7 +21,7 @@ const Buttons: FC<Props> = ({ refetch }) => {
               onClick={() => refetch()}
               className="bg-[rgba(255,255,255,0.08)] rounded-lg flex items-center justify-center p-2 border hover:bg-[rgba(255,255,255,0.12)]"
             >
-              <ArrowPath />
+              <ArrowPathIcon />
             </button>
           </TooltipTrigger>
           <TooltipContent sideOffset={TOOLTIP_OFFSET} className={TOOLTIP_CONTENT_STYLES}>
